@@ -1,5 +1,13 @@
 pcall(function() require("mason").setup() end)
 
+pcall(function()
+  require("lazydev").setup({
+    library = {
+      { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+    },
+  })
+end)
+
 -- LSP Config
 local ok_lsp, lspconfig = pcall(require, "lspconfig")
 if ok_lsp then
