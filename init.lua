@@ -9,6 +9,6 @@ require("plugins.ui")
 require("plugins.editor")
 require("plugins.lsp")
 
--- 4. Load keymaps & autocmds last
+-- 4. Load keymaps & autocmds
 require("config.keymaps")
 require("config.autocmds")

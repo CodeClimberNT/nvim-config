@@ -9,7 +9,7 @@ pcall(function()
 end)
 
 -- LSP Config
-local ok_lsp, lspconfig = pcall(require, "lspconfig")
+local ok_lsp, _lspconfig = pcall(require, "lspconfig")
 if ok_lsp then
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   if pcall(require, "cmp_nvim_lsp") then
@@ -25,7 +25,10 @@ if ok_lsp then
       local client = vim.lsp.get_client_by_id(args.data.client_id)
       if client and client.name == "ts_ls" then
         vim.keymap.set("n", "<leader>co", function()
-          vim.lsp.buf.execute_command({ command = "_typescript.organizeImports", arguments = { vim.api.nvim_buf_get_name(0) } })
+          vim.lsp.buf.execute_command({ 
+              command = "_typescript.organizeImports",
+              arguments = { vim.api.nvim_buf_get_name(0) } 
+            })
         end, { buffer = args.buf, desc = "Organize Imports" })
       end
     end,
@@ -72,9 +75,23 @@ if ok_cmp then
       end, { 'i', 's' }),
     }),
     sources = cmp.config.sources({
-      { name = 'nvim_lsp' }, { name = 'luasnip' }, { name = 'buffer' }, { name = 'path' }, { name = 'emoji' },
-    })
+      { name = "lazydev", group_index = 0 },
+      { name = "nvim_lsp" },
+      { name = "luasnip" },
+      { name = "buffer" },
+      { name = "path" },
+      { name = "emoji" },
+    }),
   })
-  cmp.setup.cmdline({ '/', '?' }, { mapping = cmp.mapping.preset.cmdline(), sources = { { name = 'buffer' } } })
-  cmp.setup.cmdline(':', { mapping = cmp.mapping.preset.cmdline(), sources = cmp.config.sources({ { name = 'path' } }, { { name = 'cmdline' } }) })
+  cmp.setup.cmdline({ '/', '?' }, { 
+    mapping = cmp.mapping.preset.cmdline(), 
+    sources = { { name = 'buffer' } } 
+  })
+
+  cmp.setup.cmdline(':', { 
+    mapping = cmp.mapping.preset.cmdline(), 
+    sources = cmp.config.sources(
+      { { name = 'path' } }, 
+      { { name = 'cmdline' } }) 
+    })
 end
