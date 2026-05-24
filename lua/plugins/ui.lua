@@ -3,11 +3,14 @@ vim.cmd("colorscheme tokyonight")
 local ok_starter, starter = pcall(require, "mini.starter")
 if ok_starter then
   local logo = table.concat({
-    [[  _   __               _         ]],
-    [[ / | / /__  ____ _   _(_)___ ___ ]],
-    [[/  |/ / _ \/ __ \ | / / / __ `__ \]],
-    [[/ /|  /  __/ /_/ / |/ / / / / / / /]],
-    [[/_/ |_/\___/\____/|___/_/_/ /_/ /_/ ]],
+    [[888b    888                  888     888 d8b              ]],
+    [[8888b   888                  888     888 Y8P              ]],
+    [[88888b  888                  888     888                  ]],
+    [[888Y88b 888  .d88b.   .d88b. Y88b   d88P 888 88888b.d88b. ]],
+    [[888 Y88b888 d8P  Y8b d88""88b Y88b d88P  888 888 "888 "88b]],
+    [[888  Y88888 88888888 888  888  Y88o88P   888 888  888  888]],
+    [[888   Y8888 Y8b.     Y88..88P   Y888P    888 888  888  888]],
+    [[888    Y888  "Y8888   "Y88P"     Y8P     888 888  888  888]],
   }, "\n")
   starter.setup({
     evaluate_single = true,
@@ -17,7 +20,9 @@ if ok_starter then
       { name = "Recent files", action = "Telescope oldfiles", section = "Telescope" },
       { name = "Grep text", action = "Telescope live_grep", section = "Telescope" },
       { name = "LazyGit", action = "lua require('snacks').lazygit()", section = "Tools" },
+      { name = "File Browser", action = "Neotree toggle", section = "Tools" },
       { name = "Mason", action = "Mason", section = "Tools" },
+      { name = "Check Health", action = "checkhealth", section = "Tools" },
       { name = "New file", action = "ene | startinsert", section = "Built-in" },
       { name = "Quit Neovim", action = "qa", section = "Built-in" },
     },

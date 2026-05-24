@@ -31,3 +31,6 @@ map("n", "<leader>ff", function() require("telescope.builtin").find_files() end,
 map("n", "<leader>sg", function() require("telescope.builtin").live_grep() end, { desc = "Live Grep" })
 map("n", "<leader>fT", function() require("snacks").terminal() end, { desc = "Terminal" })
 map("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })
+
+-- File Explorer (Neo-tree)
+map("n", "<leader>e", "<cmd>Neotree reveal toggle<cr>", { desc = "Toggle File Explorer" })
