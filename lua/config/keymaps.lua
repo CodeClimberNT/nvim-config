@@ -32,5 +32,10 @@ map("n", "<leader>sg", function() require("telescope.builtin").live_grep() end, 
 map("n", "<leader>fT", function() require("snacks").terminal() end, { desc = "Terminal" })
 map("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })
 
+-- Diagnostics & Trouble
+vim.keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Diagnostics (Trouble)" })
+vim.keymap.set("n", "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { desc = "Buffer Diagnostics (Trouble)" })
+vim.keymap.set("n", "<leader>cs", "<cmd>Trouble symbols toggle focus=false<cr>", { desc = "Document Symbols" })
+
 -- File Explorer (Neo-tree)
 map("n", "<leader>e", "<cmd>Neotree reveal toggle<cr>", { desc = "Toggle File Explorer" })

@@ -1,6 +1,8 @@
 local plugins = {
   -- Themes & UI
-  "https://github.com/folke/tokyonight.nvim",
+    "https://github.com/rktjmp/lush.nvim",
+  "https://github.com/uloco/bluloco.nvim",
+  -- "https://github.com/folke/tokyonight.nvim",
   "https://github.com/nvim-lualine/lualine.nvim",
   "https://github.com/akinsho/bufferline.nvim",
   "https://github.com/folke/noice.nvim",

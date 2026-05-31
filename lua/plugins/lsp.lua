@@ -31,6 +31,16 @@ if ok_lsp then
             })
         end, { buffer = args.buf, desc = "Organize Imports" })
       end
+
+      -- NEW: Override Neovim's default mappings to use Telescope's floating menus
+      local tel_builtin = require("telescope.builtin")
+      vim.keymap.set("n", "gd", tel_builtin.lsp_definitions, { buffer = args.buf, desc = "Go to Definition" })
+      vim.keymap.set("n", "gr", tel_builtin.lsp_references, { buffer = args.buf, desc = "Go to References" })
+      vim.keymap.set("n", "gI", tel_builtin.lsp_implementations, { buffer = args.buf, desc = "Go to Implementation" })
+      
+      -- NEW: Friendly `<leader>` mappings (aliases to the built-in `gra` and `grn` defaults)
+      vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { buffer = args.buf, desc = "Code Action" })
+      vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = args.buf, desc = "Rename Symbol" })
     end,
   })
 end

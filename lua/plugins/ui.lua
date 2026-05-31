@@ -1,4 +1,22 @@
-vim.cmd("colorscheme tokyonight")
+
+vim.opt.termguicolors = true
+
+-- Ensure it's wrapped in a pcall (safe require) similar to your other plugins
+local ok_bluloco, bluloco = pcall(require, "bluloco")
+if ok_bluloco then
+  bluloco.setup({
+    style = "dark",               -- explicitly set to "dark"
+    transparent = false,
+    italics = false,
+    terminal = vim.fn.has("gui_running") == 1, 
+    guicursor = true,
+    rainbow_headings = false,     
+    float_window = "default" 
+  })
+end
+
+vim.cmd('colorscheme bluloco')
+-- vim.cmd("colorscheme tokyonight")
 
 local ok_starter, starter = pcall(require, "mini.starter")
 if ok_starter then
@@ -58,7 +76,7 @@ end
 local ok_lualine, lualine = pcall(require, "lualine")
 if ok_lualine then
   lualine.setup({
-    options = { theme = "tokyonight" },
+    options = { theme = "auto" },
     sections = {
       lualine_x = { function() return "😄" end, "encoding", "fileformat", "filetype" }
     }
